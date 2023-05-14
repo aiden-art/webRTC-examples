@@ -1,14 +1,15 @@
-import Image from "next/image";
 import NextLink from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h2 className="text-center">从零打造音视频直播系统</h2>
-      <ul>
-        <li>
-          <NextLink href="/getUserMedia">
-            原来通过浏览器访问摄像头这么容易
+    <main className="min-h-screen p-4">
+      <h2 className="text-lg font-semibold text-center">
+        Build a live streaming system from scratch
+      </h2>
+      <ul className="px-4 mt-6 text-sm">
+        <li className="list-disc">
+          <NextLink className="underline" href="/getUserMedia">
+            Accessing the camera through a browser is so easy
           </NextLink>
         </li>
         <li></li>

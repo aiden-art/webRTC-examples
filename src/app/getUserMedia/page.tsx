@@ -1,9 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const GetUserMediaPage = () => {
-  const [isConnected, setIsConnected] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const videoElRef = useRef<null | HTMLVideoElement>(null);
   const initialize = () => {
     const mediaStreamContrains: MediaStreamConstraints = {
       video: true,
@@ -11,16 +11,12 @@ const GetUserMediaPage = () => {
     };
 
     function gotLocalMediaStream(mediaStream: MediaProvider) {
-      const localVideo = document.querySelector("video");
-      setIsConnected(true);
-      if (localVideo && localVideo.srcObject) {
-        localVideo.srcObject = mediaStream;
+      if (videoElRef.current) {
+        videoElRef.current.srcObject = mediaStream;
       }
-      console.log(mediaStream);
     }
 
     function handleLocalMediaStreamError(error: Error) {
-      setIsConnected(false);
       console.log("navigator.getUserMedia error: ", error);
       setErrorMsg(error.message);
     }
@@ -36,14 +32,11 @@ const GetUserMediaPage = () => {
   }, []);
 
   return (
-    <>
-      <h1>Realtime communication with WebRTC</h1>
-      {isConnected ? (
-        <video autoPlay playsInline></video>
-      ) : (
-        <div> connected failed: {errorMsg}</div>
-      )}
-    </>
+    <div className="px-4">
+      <h1 className="py-10 text-center">Realtime communication with WebRTC</h1>
+      <video className="m-auto" ref={videoElRef} autoPlay playsInline></video>
+      {errorMsg && <p>connected failed: {errorMsg}</p>}
+    </div>
   );
 };
 
