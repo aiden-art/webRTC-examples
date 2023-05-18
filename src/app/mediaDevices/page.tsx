@@ -11,6 +11,11 @@ const MediaDevicesPage = () => {
       return;
     }
     try {
+      // In order to gain access to media devices then we can get media devices detail
+      navigator.mediaDevices.getUserMedia({
+        audio: true,
+        video: true,
+      });
       const deviceInfos = await navigator.mediaDevices.enumerateDevices();
       setDeviceInfos(deviceInfos);
     } catch (e) {
