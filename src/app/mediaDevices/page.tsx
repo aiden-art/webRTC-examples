@@ -11,11 +11,6 @@ const MediaDevicesPage = () => {
       return;
     }
     try {
-      // In order to gain access to media devices then we can get media devices detail
-      navigator.mediaDevices.getUserMedia({
-        audio: true,
-        video: true,
-      });
       const deviceInfos = await navigator.mediaDevices.enumerateDevices();
       setDeviceInfos(deviceInfos);
     } catch (e) {
@@ -28,7 +23,9 @@ const MediaDevicesPage = () => {
   }, []);
   return (
     <div className="text-black ">
-      <h1 className="py-10 text-center">Media devices in your device</h1>
+      <h2 className="py-10 text-lg font-semibold text-center">
+        Media devices in your device
+      </h2>
       <div className="px-10">
         {errMsg ? (
           <p className="py-4 text-center">{errMsg}</p>

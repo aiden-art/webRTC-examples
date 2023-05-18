@@ -1,4 +1,7 @@
+"use client";
+
 import NextLink from "next/link";
+import { useEffect } from "react";
 
 export default function Home() {
   const courseList = [
@@ -11,6 +14,15 @@ export default function Home() {
       link: "/mediaDevices",
     },
   ];
+
+  useEffect(() => {
+    // In order to gain access to media devices then we can get media devices detail
+    navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: true,
+    });
+  }, []);
+
   return (
     <main className="min-h-screen p-4 text-black">
       <h2 className="text-lg font-semibold text-center">
