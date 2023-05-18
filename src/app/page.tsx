@@ -12,7 +12,7 @@ export default function Home() {
     },
   ];
   return (
-    <main className="min-h-screen p-4">
+    <main className="min-h-screen p-4 text-black">
       <h2 className="text-lg font-semibold text-center">
         Build a live streaming system from scratch
       </h2>

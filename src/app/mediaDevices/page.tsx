@@ -22,7 +22,7 @@ const MediaDevicesPage = () => {
     initialize();
   }, []);
   return (
-    <div>
+    <div className="text-black ">
       <h1 className="py-10 text-center">Media devices in your device</h1>
       <div className="px-10">
         {errMsg ? (

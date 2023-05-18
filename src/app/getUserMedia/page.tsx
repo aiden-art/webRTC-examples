@@ -32,7 +32,7 @@ const GetUserMediaPage = () => {
   }, []);
 
   return (
-    <div className="px-4">
+    <div className="px-4 text-black">
       <h1 className="py-10 text-center">Realtime communication with WebRTC</h1>
       <video className="m-auto" ref={videoElRef} autoPlay playsInline></video>
       {errorMsg && <p>connected failed: {errorMsg}</p>}
